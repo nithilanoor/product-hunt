@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import SocialLogin from "../components/SocialLogin";
 
 
 const Login = () => {
@@ -50,7 +51,7 @@ const Login = () => {
                         </div>
                         <div className="divider">or</div>
                         <div className="form-control">
-                            Social Login
+                            <SocialLogin></SocialLogin>
                         </div>
                     </form>
                     <div className='mx-auto py-4'>

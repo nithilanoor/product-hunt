@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import SocialLogin from "../components/SocialLogin";
 
 
 const Register = () => {
@@ -107,7 +108,7 @@ const Register = () => {
                         </div>
                         <div className="divider">or</div>
                         <div className="form-control">
-                            Social Login
+                            <SocialLogin></SocialLogin>
                         </div>
                     </form>
                     <div className='mx-auto py-4'>
