@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import SocialLogin from "../components/SocialLogin";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
@@ -18,7 +19,15 @@ const Login = () => {
         logIn(email, password)
             .then(res => {
                 const user = res.user;
-                console.log(user)
+                console.log(user);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    text: "Welcome Back! You are successfully logged in.",
+                    color: "#3A3F00",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             })
 
     }

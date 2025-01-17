@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import SocialLogin from "../components/SocialLogin";
+import Swal from "sweetalert2";
 
 
 const Register = () => {
@@ -13,8 +14,8 @@ const Register = () => {
         formState: { errors },
     } = useForm();
 
-    
-    const {createUser} = useAuth();
+
+    const { createUser } = useAuth();
 
 
     const onSubmit = (data) => {
@@ -23,6 +24,14 @@ const Register = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    text: "Welcome to Product Hunt!",
+                    color: "#3A3F00",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 // updateUserProfile(data.name, data.photoURL)
                 //     .then(() => {
                 //         // create user entry in the database

@@ -1,5 +1,6 @@
 import { FaGoogle } from "react-icons/fa";
 import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
 // import useAxiosPublic from "../hooks/useAxiosPublic";
 // import { useNavigate } from "react-router-dom";
 
@@ -13,7 +14,15 @@ const SocialLogin = () => {
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
-                // console.log(result.user);
+                console.log(result.user);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    text: "Welcome!",
+                    color: "#3A3F00",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 // const userInfo = {
                 //     email: result.user?.email,
                 //     name: result.user?.displayName
