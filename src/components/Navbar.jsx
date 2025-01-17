@@ -1,13 +1,26 @@
 import { NavLink } from "react-router-dom"
 import navLogo from "../../public/logo/icons8-ai-80.png"
+import useAuth from "../hooks/useAuth";
+import { MdLogout } from "react-icons/md";
+import { useState } from "react";
 
 
 const Navbar = () => {
 
+    const { user, logOut } = useAuth();
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
+
     const links = <>
         <NavLink to="/"><li>Home</li></NavLink>
         <NavLink to="/"><li>Products</li></NavLink>
-        <NavLink to="/login"><li>Login</li></NavLink>
+        {
+            user && user?.email ? <button onClick={handleLogOut} className="font-bold flex items-center gap-2 justify-center text-red-950">Log Out <MdLogout /></button> : <NavLink to="/login"><li>Login</li></NavLink>
+        }
     </>
 
     return (
@@ -40,12 +53,18 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu gap-4 text-[#3A3F00] font-semibold menu-horizontal px-1">
+                <ul className="menu items-center gap-4 text-[#3A3F00] font-semibold menu-horizontal px-1">
                     {links}
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">User</a>
+                {user?.email ? <div className="dropdown dropdown-end">
+                    <div tabIndex={0} role="button" className="btn m-1">Click</div>
+                    <div tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow text-center">
+                        <li className="text-center font-bold text-[#3A3F00] my-2">{user && user?.email}</li>
+                        <NavLink className={"my-2 text-[#3A3F00]"} to="/"><li>Dashboard</li></NavLink>
+                    </div>
+                </div> : <a className="btn">Button</a>}
             </div>
         </div>
     );

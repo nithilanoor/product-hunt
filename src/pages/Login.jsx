@@ -1,13 +1,33 @@
 import { Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 
 const Login = () => {
+
+    const { logIn } = useAuth();
+
+    const handleLogin = e => {
+        e.preventDefault();
+
+        const form = e.target;
+
+        const email = form.email.value;
+        const password = form.password.value;
+
+        logIn(email, password)
+            .then(res => {
+                const user = res.user;
+                console.log(user)
+            })
+
+    }
+
     return (
         <div className="hero bg-base-200 min-h-screen">
             <div className="w-11/12 mx-auto md:w-96">
                 <div className="card bg-base-100 w-full mx-auto shadow-2xl">
                     <h3 className="text-center text-[#3A3F00] text-2xl font-bold p-4">Login</h3>
-                    <form className="card-body">
+                    <form onSubmit={handleLogin} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>

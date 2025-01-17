@@ -1,9 +1,8 @@
 import BannerImg from "../../../public/ProductAssets/Banner.png"
-import Footer from "../../components/Footer";
 
 const Banner = () => {
     return (
-        <div className="relative w-ful py-20">
+        <div className="relative w-full py-20">
             <div className="absolute inset-0 bg-black opacity-50"></div>
             <div className="container mx-auto text-center relative z-10 py-4 px-4">
                 <h1 className="text-4xl font-extrabold mb-4 text-[#fdffe3]">Discover the Best Web and AI Tools</h1>
