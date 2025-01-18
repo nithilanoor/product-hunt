@@ -1,0 +1,202 @@
+[
+    {
+        "_id": "1",
+        "name": "AI Chatbot Pro",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/b9/57/44/b95744c7-ab26-d0f9-8845-fa1fb30053cc/AppIcon-1x_U007emarketing-0-7-0-85-220.png/256x256bb.jpg",
+        "description": "An advanced AI-powered chatbot that can assist with customer queries in real-time.",
+        "tags": [
+            "AI",
+            "Chatbot",
+            "Customer Support"
+        ],
+        "external_link": "https://aichatbotpro.com",
+        "upvotes": 120,
+        "owner": {
+            "name": "John Doe",
+            "email": "john@example.com",
+            "image": "https://i.ibb.co.com/jzf8XL4/johnDoe.jpg"
+        },
+        "status": "Accepted",
+        "createdAt": "2025-01-15T12:00:00Z"
+    },
+    {
+        "_id": "2",
+        "name": "Svelte DevTools Plus",
+        "image": "https://www.sveltedevtools.com/4c5f51eae4ed00a00a22.png",
+        "description": "A suite of powerful development tools for web and software engineers.",
+        "tags": [
+            "Web Development",
+            "Tools",
+            "Software"
+        ],
+        "external_link": "https://www.sveltedevtools.com/",
+        "upvotes": 95,
+        "owner": {
+            "name": "Alice Smith",
+            "email": "alice@example.com",
+            "image": "https://i.ibb.co.com/R40BmBW/alice-Smith.jpg"
+        },
+        "status": "Accepted",
+        "createdAt": "2025-01-14T15:30:00Z"
+    },
+    {
+        "_id": "3",
+        "name": "PixelForge",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrh5dF-KmChAptu4OHcNPHONVkepttXDPbpw&s",
+        "description": "A powerful image and video editing tool for content creators.",
+        "tags": [
+            "Design",
+            "Image Editing",
+            "Video Editing"
+        ],
+        "external_link": "https://pixelforge.com",
+        "upvotes": 80,
+        "owner": {
+            "name": "Michael Lee",
+            "email": "michael@example.com",
+            "image": "https://i.ibb.co.com/rdX98LD/michael-Lee.jpg"
+        },
+        "status": "Accepted",
+        "createdAt": "2025-01-13T09:45:00Z"
+    },
+    {
+        "_id": "4",
+        "name": "TaskMaster Pro",
+        "image": "https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_43368d4a2f5375dfa479a10c87dcac6d/taskmaster-pro.jpg",
+        "description": "A task management and productivity tool for teams and individuals.",
+        "tags": [
+            "Productivity",
+            "Task Management",
+            "Software"
+        ],
+        "external_link": "https://taskmasterpro.com",
+        "upvotes": 110,
+        "owner": {
+            "name": "Emily Johnson",
+            "email": "emily@example.com",
+            "image": "https://i.ibb.co.com/WgsYydW/Emily-Johnson.webp"
+        },
+        "status": "Accepted",
+        "createdAt": "2025-01-12T14:20:00Z"
+    },
+    {
+        "_id": "5",
+        "name": "CoinStats",
+        "image": "https://cdn-images-1.medium.com/v2/resize:fit:1200/1*d4Mt5P0rH4_3TwLpHsdrlg.png",
+        "description": "A real-time cryptocurrency tracking and portfolio management platform.",
+        "tags": [
+            "Finance",
+            "Cryptocurrency",
+            "Investing"
+        ],
+        "external_link": "https://coinstats.app/",
+        "upvotes": 75,
+        "owner": {
+            "name": "David Brown",
+            "email": "david@example.com",
+            "image": "https://i.ibb.co.com/D99Hhfh/David-Brown.jpg"
+        },
+        "status": "Accepted",
+        "createdAt": "2025-01-11T10:10:00Z"
+    },
+    {
+        "_id": "6",
+        "name": "CodeBuddy",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeHQWV9ZwPP8iHEGAa2MFz863yTg52rI5o4_2sZfz9d9cvP3ykLiWenN9GL5fUv9CDNtM&usqp=CAU",
+        "description": "A collaborative code editor with real-time AI-assisted debugging.",
+        "tags": [
+            "Coding",
+            "Collaboration",
+            "AI"
+        ],
+        "external_link": "https://codebuddy.com",
+        "upvotes": 130,
+        "owner": {
+            "name": "Sophia Davis",
+            "email": "sophia@example.com",
+            "image": "https://i.ibb.co.com/fF51zBB/sophia-Davis.jpg"
+        },
+        "status": "Accepted",
+        "createdAt": "2025-01-10T08:00:00Z"
+    },
+    {
+        "_id": "7",
+        "name": "Candy Crush Saga",
+        "image": "https://www.letemsvetemapplem.eu/wp-content/uploads/2022/01/Candy-Crush-Saga-1.jpg",
+        "description": "A popular match-three puzzle game with hundreds of challenging levels.",
+        "tags": [
+            "Gaming",
+            "Puzzle",
+            "Mobile Game"
+        ],
+        "external_link": "https://king.com/game/candycrush",
+        "upvotes": 90,
+        "owner": {
+            "name": "Ryan Wilson",
+            "email": "ryan@example.com",
+            "image": "https://i.ibb.co.com/WHFGcW2/ryan-Wilson.jpg"
+        },
+        "status": "Pending",
+        "createdAt": "2025-01-09T18:45:00Z"
+    },
+    {
+        "_id": "8",
+        "name": "EduLearn",
+        "image": "https://www.jackson.stark.k12.oh.us/cms/lib/OH02206107/Centricity/Domain/1775/cap.png",
+        "description": "An online learning platform with interactive courses and AI tutors.",
+        "tags": [
+            "Education",
+            "E-Learning",
+            "AI"
+        ],
+        "external_link": "https://edulearn.io/",
+        "upvotes": 85,
+        "owner": {
+            "name": "Olivia Martinez",
+            "email": "olivia@example.com",
+            "image": "https://i.ibb.co.com/RYrBs4Q/olivia-Martinez.jpg"
+        },
+        "status": "Accepted",
+        "createdAt": "2025-01-08T22:00:00Z"
+    },
+    {
+        "_id": "9",
+        "name": "Audacity",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6ac1SfyiMn6FFlUYBJIiFKn8FQlSuX6oTKA&s",
+        "description": "A free, open-source, cross-platform audio software for recording and editing.",
+        "tags": [
+            "Music",
+            "Audio Editing",
+            "Software"
+        ],
+        "external_link": "https://www.audacityteam.org/",
+        "upvotes": 70,
+        "owner": {
+            "name": "Jake Thompson",
+            "email": "jake@example.com",
+            "image": "https://randomuser.me/api/portraits/med/men/75.jpg"
+        },
+        "status": "Accepted",
+        "createdAt": "2025-01-07T12:30:00Z"
+    },
+    {
+        "_id": "10",
+        "name": "Google Travel",
+        "image": "https://uploads-ssl.webflow.com/662fbf69a72889ec66f07686/662fbf69a72889ec66f0a39d_google%20travel.png",
+        "description": "A smart travel planning tool that helps users find flights, hotels, and explore destinations with AI-driven recommendations.",
+        "tags": [
+            "Travel",
+            "AI",
+            "Planning"
+        ],
+        "external_link": "https://www.google.com/travel/",
+        "upvotes": 105,
+        "owner": {
+            "name": "Lisa Anderson",
+            "email": "lisa@example.com",
+            "image": "https://i.ibb.co.com/j39607B/lisa-Anderson.jpg"
+        },
+        "status": "Accepted",
+        "createdAt": "2025-01-06T17:15:00Z"
+    }
+]
