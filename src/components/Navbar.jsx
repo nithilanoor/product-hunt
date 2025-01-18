@@ -17,7 +17,7 @@ const Navbar = () => {
 
     const links = <>
         <NavLink to="/"><li>Home</li></NavLink>
-        <NavLink to="/"><li>Products</li></NavLink>
+        <NavLink to="/allProducts"><li>Products</li></NavLink>
         {
             user && user?.email ? <button onClick={handleLogOut} className="font-bold flex items-center gap-2 justify-center text-red-950">Log Out <MdLogout /></button> : <NavLink to="/login"><li>Login</li></NavLink>
         }

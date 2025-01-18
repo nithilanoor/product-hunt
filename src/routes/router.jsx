@@ -6,6 +6,7 @@ import Register from "../pages/Register";
 import Error from "../pages/Error";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
+import AllProducts from "../pages/AllProducts";
 
 
 const router = createBrowserRouter([
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
                 path: 'register',
                 element: <Register></Register>
             },
+            {
+                path: 'allProducts',
+                element: <AllProducts></AllProducts>
+            }
         ]
     },
     {
