@@ -18,7 +18,7 @@ const SocialLogin = () => {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    text: "Welcome!",
+                    text: "Welcome to Product Hunt!",
                     color: "#3A3F00",
                     showConfirmButton: false,
                     timer: 1500

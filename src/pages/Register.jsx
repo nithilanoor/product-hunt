@@ -15,7 +15,7 @@ const Register = () => {
     } = useForm();
 
 
-    const { createUser } = useAuth();
+    const { createUser, updateUserProfile } = useAuth();
 
 
     const onSubmit = (data) => {
@@ -24,40 +24,41 @@ const Register = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    text: "Welcome to Product Hunt!",
-                    color: "#3A3F00",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                // updateUserProfile(data.name, data.photoURL)
-                //     .then(() => {
-                //         // create user entry in the database
-                //         const userInfo = {
-                //             name: data.name,
-                //             email: data.email
-                //         }
-                //         axiosPublic.post('/users', userInfo)
-                //             .then(res => {
-                //                 if (res.data.insertedId) {
+                updateUserProfile(data.name, data.photoURL)
+                    .then(() => {
+                        // create user entry in the database
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email
+                        }
+                        console.log(userInfo);
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            text: "Welcome to Product Hunt!",
+                            color: "#3A3F00",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        // axiosPublic.post('/users', userInfo)
+                        //     .then(res => {
+                        //         if (res.data.insertedId) {
 
-                //                     reset();
-                //                     Swal.fire({
-                //                         position: "top-end",
-                //                         icon: "success",
-                //                         title: "User created successfully. Welcome to Bistro Boss!",
-                //                         color: "#D1A054",
-                //                         showConfirmButton: false,
-                //                         timer: 1500
-                //                     });
-                //                     navigate("/");
+                        //             reset();
+                        //             Swal.fire({
+                        //                 position: "top-end",
+                        //                 icon: "success",
+                        //                 title: "User created successfully. Welcome to Bistro Boss!",
+                        //                 color: "#D1A054",
+                        //                 showConfirmButton: false,
+                        //                 timer: 1500
+                        //             });
+                        //             navigate("/");
 
-                //                 }
-                //             })
-                //     })
-                //     .catch(error => console.log(error))
+                        //         }
+                        //     })
+                    })
+                    .catch(error => console.log(error))
             })
     }
 

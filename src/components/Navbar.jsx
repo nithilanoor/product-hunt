@@ -61,8 +61,8 @@ const Navbar = () => {
                 {user?.email ? <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn m-1">Click</div>
                     <div tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow text-center">
-                        <li className="text-center font-bold text-[#3A3F00] my-2">{user && user?.email}</li>
-                        <NavLink className={"my-2 text-[#3A3F00]"} to="/"><li>Dashboard</li></NavLink>
+                        <li className="text-center font-bold text-[#3A3F00] my-2">{user?.email && user?.displayName ? user?.displayName : user?.email}</li>
+                        <NavLink className={"my-2 text-[#3A3F00]"} to="/dashboard"><li>Dashboard</li></NavLink>
                     </div>
                 </div> : <a className="btn">Button</a>}
             </div>
