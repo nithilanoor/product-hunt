@@ -1,9 +1,10 @@
 import { BiSolidHomeHeart } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 
 const ProductItem = ({ item }) => {
 
-    const { name, image, tags, upvotes } = item;
+    const { _id, name, image, tags, upvotes } = item;
 
     return (
         <div className="card bg-base-100 shadow-xl border border-[#e1e2d7]">
@@ -14,7 +15,7 @@ const ProductItem = ({ item }) => {
             </figure>
             <div className="card-body">
                 <h2 className="card-title text-[#3A3F00] font-semibold font-serif">
-                    {name}
+                    <Link to={`/details/${_id}`}>{name}</Link>
                     <div className="badge bg-indigo-200 text-white">Featured</div>
                 </h2>
             </div>

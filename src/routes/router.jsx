@@ -7,6 +7,7 @@ import Error from "../pages/Error";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
 import AllProducts from "../pages/AllProducts";
+import Details from "../pages/Details";
 
 
 const router = createBrowserRouter([
@@ -29,6 +30,11 @@ const router = createBrowserRouter([
             {
                 path: 'allProducts',
                 element: <AllProducts></AllProducts>
+            },
+            {
+                path: '/details/:id',
+                element: <PrivateRoute><Details></Details></PrivateRoute>,
+                loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
             }
         ]
     },
