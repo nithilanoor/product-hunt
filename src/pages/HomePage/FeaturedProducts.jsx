@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SectionTitle from "../../components/SectionTitle";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import ProductItem from "../../components/ProductItem";
@@ -9,12 +9,12 @@ const FeaturedProducts = () => {
     const [product, setProduct] = useState([]);
     const axiosPublic = useAxiosPublic();
 
-    axiosPublic.get('/products')
-    .then(res => {
-        const featuredProducts = res.data.filter(item => item.category === 'featured');
-        setProduct(featuredProducts)
-        // console.log(featuredProducts)
-    })
+    useEffect(() => {
+        axiosPublic.get('/featured/products')
+            .then(res => {
+                setProduct(res.data);
+            })
+    }, [])
 
     return (
         <div>

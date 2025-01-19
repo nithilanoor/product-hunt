@@ -1,6 +1,6 @@
 [
     {
-        "_id": "1",
+        "id": "1",
         "name": "AI Chatbot Pro",
         "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/b9/57/44/b95744c7-ab26-d0f9-8845-fa1fb30053cc/AppIcon-1x_U007emarketing-0-7-0-85-220.png/256x256bb.jpg",
         "description": "An advanced AI-powered chatbot that can assist with customer queries in real-time.",
@@ -21,7 +21,7 @@
         "category": "featured"
     },
     {
-        "_id": "2",
+        "id": "2",
         "name": "Svelte DevTools Plus",
         "image": "https://www.sveltedevtools.com/4c5f51eae4ed00a00a22.png",
         "description": "A suite of powerful development tools for web and software engineers.",
@@ -42,7 +42,7 @@
         "category": "trending"
     },
     {
-        "_id": "3",
+        "id": "3",
         "name": "PixelForge",
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrh5dF-KmChAptu4OHcNPHONVkepttXDPbpw&s",
         "description": "A powerful image and video editing tool for content creators.",
@@ -63,7 +63,7 @@
         "category": "featured"
     },
     {
-        "_id": "4",
+        "id": "4",
         "name": "TaskMaster Pro",
         "image": "https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_43368d4a2f5375dfa479a10c87dcac6d/taskmaster-pro.jpg",
         "description": "A task management and productivity tool for teams and individuals.",
@@ -84,7 +84,7 @@
         "category": "trending"
     },
     {
-        "_id": "5",
+        "id": "5",
         "name": "CoinStats",
         "image": "https://cdn-images-1.medium.com/v2/resize:fit:1200/1*d4Mt5P0rH4_3TwLpHsdrlg.png",
         "description": "A real-time cryptocurrency tracking and portfolio management platform.",
@@ -105,7 +105,7 @@
         "category": "trending"
     },
     {
-        "_id": "6",
+        "id": "6",
         "name": "CodeBuddy",
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeHQWV9ZwPP8iHEGAa2MFz863yTg52rI5o4_2sZfz9d9cvP3ykLiWenN9GL5fUv9CDNtM&usqp=CAU",
         "description": "A collaborative code editor with real-time AI-assisted debugging.",
@@ -126,7 +126,7 @@
         "category": "featured"
     },
     {
-        "_id": "7",
+        "id": "7",
         "name": "Candy Crush Saga",
         "image": "https://www.letemsvetemapplem.eu/wp-content/uploads/2022/01/Candy-Crush-Saga-1.jpg",
         "description": "A popular match-three puzzle game with hundreds of challenging levels.",
@@ -147,7 +147,7 @@
         "category": "featured"
     },
     {
-        "_id": "8",
+        "id": "8",
         "name": "EduLearn",
         "image": "https://www.jackson.stark.k12.oh.us/cms/lib/OH02206107/Centricity/Domain/1775/cap.png",
         "description": "An online learning platform with interactive courses and AI tutors.",
@@ -168,7 +168,7 @@
         "category": "trending"
     },
     {
-        "_id": "9",
+        "id": "9",
         "name": "Audacity",
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6ac1SfyiMn6FFlUYBJIiFKn8FQlSuX6oTKA&s",
         "description": "A free, open-source, cross-platform audio software for recording and editing.",
@@ -189,7 +189,7 @@
         "category": "trending"
     },
     {
-        "_id": "10",
+        "id": "10",
         "name": "Google Travel",
         "image": "https://uploads-ssl.webflow.com/662fbf69a72889ec66f07686/662fbf69a72889ec66f0a39d_google%20travel.png",
         "description": "A smart travel planning tool that helps users find flights, hotels, and explore destinations with AI-driven recommendations.",
