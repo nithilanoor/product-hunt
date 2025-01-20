@@ -1,9 +1,10 @@
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
-const ReviewForm = ({ productId }) => {
+const ReviewForm = ({ productId, setReviews, reviews }) => {
 
     const [reviewText, setReviewText] = useState('');
     const [rating, setRating] = useState(5);
@@ -13,7 +14,7 @@ const ReviewForm = ({ productId }) => {
     const handleSubmit = e => {
         e.preventDefault();
 
-        const review = {
+        const newReview = {
             productId,
             reviewerName: user.displayName,
             reviewerImage: user.photoURL,
@@ -21,12 +22,21 @@ const ReviewForm = ({ productId }) => {
             rating
         }
 
-        axiosSecure.post('/reviews', review)
+        axiosSecure.post('/reviews', newReview)
             .then(res => {
                 console.log(res.data)
                 if (res.data.insertedId) {
-                    alert('review submitted');
+                    Swal.fire({
+                        position: "top-end",
+                        width: 400,
+                        icon: "success",
+                        text: "Your review is posted.",
+                        color: "#3A3F00",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                     setReviewText('');
+                    setReviews([...reviews, { _id: res.data.insertedId, ...newReview }]);
                 }
             })
 
@@ -34,7 +44,8 @@ const ReviewForm = ({ productId }) => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit} className="mt-4">
+            <h3 className="text-lg font-semibold text-[#3A3F00]">Post a review</h3>
+            <form onSubmit={handleSubmit} className="mt-2">
                 <textarea
                     value={reviewText}
                     onChange={(e) => setReviewText(e.target.value)}

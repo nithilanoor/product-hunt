@@ -2,7 +2,6 @@ import { BiSolidHomeHeart } from "react-icons/bi";
 import { MdReport } from "react-icons/md";
 import { Link, useLoaderData } from "react-router-dom";
 import ProductReview from "../components/Review/ProductReview";
-import ReviewForm from "../components/Review/ReviewForm";
 
 
 const Details = () => {
@@ -51,7 +50,6 @@ const Details = () => {
             </div>
             <div className="mb-16">
                 <ProductReview productId={products._id}></ProductReview>
-                <ReviewForm productId={products._id}></ReviewForm>
             </div>
         </div>
     );
