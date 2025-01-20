@@ -1,11 +1,12 @@
 import { Link, Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import useAdmin from "../hooks/useAdmin";
 
 
 const DashboardLayout = () => {
 
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
 
     return (
         <div className="w-11/12 mx-auto">
@@ -17,9 +18,9 @@ const DashboardLayout = () => {
                 {isAdmin ?
                     <div>
                         <div role="tablist" className="tabs flex">
-                            <Link to="/dashboard/myProfile"><p role="tab" className="tab">Statistics</p></Link>
+                            <Link to="/dashboard/stats"><p role="tab" className="tab">Statistics</p></Link>
                             <Link to='/dashboard/users'><p role="tab" className="tab tab-active">Manage Users</p></Link>
-                            <Link to=""><p role="tab" className="tab">Manage Coupons</p></Link>
+                            <Link to="/dashboard/coupons"><p role="tab" className="tab">Manage Coupons</p></Link>
                         </div>
                         <hr className="my-2" />
                         <div className="mt-5">

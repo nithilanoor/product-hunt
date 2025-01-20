@@ -12,6 +12,7 @@ import MyProfile from "../pages/Dashboard/MyProfile";
 import Payment from "../pages/Dashboard/Payment";
 import AddProduct from "../pages/Dashboard/AddProduct";
 import AllUsers from "../pages/Dashboard/AllUsers";
+import Statistics from "../pages/Dashboard/Statistics";
 
 
 const router = createBrowserRouter([
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
             {
                 path: 'users',
                 element: <AllUsers></AllUsers>
+            },
+            {
+                path: 'stats',
+                element: <Statistics></Statistics>
             }
 
         ]

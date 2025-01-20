@@ -82,14 +82,14 @@ const CheckoutForm = () => {
                 navigate('/dashboard/myProfile')
 
                 // save the data in DB
-                const payment = {
-                    email: user.email,
-                    price: price,
-                    date: new Date(),                    
-                    status: 'verified'
-                }
+                // const payment = {
+                //     email: user.email,
+                //     price: price,
+                //     date: new Date(),                    
+                //     status: 'verified'
+                // }
 
-                const res = await axiosSecure.post('/payments', payment)
+                // const res = await axiosSecure.post('/payments', payment)
 
             }
         }
