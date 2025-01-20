@@ -9,6 +9,8 @@ import PrivateRoute from "./PrivateRoute";
 import AllProducts from "../pages/AllProducts";
 import Details from "../pages/Details";
 import MyProfile from "../pages/Dashboard/MyProfile";
+import Payment from "../pages/Dashboard/Payment";
+import AddProduct from "../pages/Dashboard/AddProduct";
 
 
 const router = createBrowserRouter([
@@ -48,6 +50,14 @@ const router = createBrowserRouter([
                 path: "myProfile",
                 element: <MyProfile></MyProfile>
             },
+            {
+                path: 'addProduct',
+                element: <AddProduct></AddProduct>
+            },
+            {
+                path: 'payment',
+                element: <Payment></Payment>
+            }
 
             // admin only routes
             // {

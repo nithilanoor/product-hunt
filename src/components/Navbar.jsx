@@ -19,7 +19,7 @@ const Navbar = () => {
         <NavLink to="/"><li>Home</li></NavLink>
         <NavLink to="/allProducts"><li>Products</li></NavLink>
         {
-            user && user?.email ? <NavLink to="/"><li>My Profile</li></NavLink> : <NavLink to="/login"><li>Login</li></NavLink>
+            user && user?.email ? <NavLink to="/dashboard/myProfile"><li>My Profile</li></NavLink> : <NavLink to="/login"><li>Login</li></NavLink>
         }
     </>
 
