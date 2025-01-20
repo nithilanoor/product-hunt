@@ -9,6 +9,7 @@ const Statistics = () => {
     const [stats, setStats] = useState({
         products: 0,
         users: 0,
+        reviews: 0
     });
     const axiosSecure = useAxiosSecure();
 
@@ -29,9 +30,10 @@ const Statistics = () => {
     const data = [
         { name: "products", value: stats.products },
         { name: "users", value: stats.users },
+        { name: "reviews", value: stats.reviews },
     ];
 
-    const COLORS = ["#4CAF50", "#FF6347"];
+    const COLORS = ["#4CAF50", "#FF6347", "#800080"];
 
     return (
         <div className="container mx-auto p-6 text-[#3A3F00]">
@@ -51,8 +53,9 @@ const Statistics = () => {
                 </ResponsiveContainer>
             </div>
             <div className="mt-6">
-                <p className="text-xl font-medium">Active Products: {stats.products}</p>
-                <p className="text-xl font-medium">Inactive Products: {stats.users}</p>
+                <p className="text-xl font-medium">Products: {stats.products}</p>
+                <p className="text-xl font-medium">Users: {stats.users}</p>
+                <p className="text-xl font-medium">Reviews: {stats?.reviews || 0}</p>
             </div>
         </div>
     );
