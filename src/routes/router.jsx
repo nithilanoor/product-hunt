@@ -13,6 +13,9 @@ import Payment from "../pages/Dashboard/Payment";
 import AddProduct from "../pages/Dashboard/AddProduct";
 import AllUsers from "../pages/Dashboard/AllUsers";
 import Statistics from "../pages/Dashboard/Statistics";
+import AdminRoutes from "./AdminRoutes";
+import MyProducts from "../pages/Dashboard/MyProducts";
+import Coupons from "../pages/Dashboard/Coupons";
 
 
 const router = createBrowserRouter([
@@ -60,15 +63,23 @@ const router = createBrowserRouter([
                 path: 'payment',
                 element: <Payment></Payment>
             },
+            {
+                path: 'myProducts',
+                element: <MyProducts></MyProducts>
+            },
 
             // admin only routes
             {
                 path: 'users',
-                element: <AllUsers></AllUsers>
+                element: <AdminRoutes><AllUsers></AllUsers></AdminRoutes>
             },
             {
                 path: 'stats',
-                element: <Statistics></Statistics>
+                element: <AdminRoutes><Statistics></Statistics></AdminRoutes>
+            },
+            {
+                path: 'coupons',
+                element: <AdminRoutes><Coupons></Coupons></AdminRoutes>
             }
 
         ]

@@ -1,9 +1,13 @@
 
 
+
+
 const Statistics = () => {
+
+
     return (
-        <div>
-            Statistics
+        <div className="container mx-auto p-6">
+
         </div>
     );
 };

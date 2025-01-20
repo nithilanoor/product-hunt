@@ -35,7 +35,7 @@ const DashboardLayout = () => {
                         <div role="tablist" className="tabs flex">
                             <Link to="/dashboard/myProfile"><p role="tab" className="tab">My Profile</p></Link>
                             <Link to='/dashboard/addProduct'><p role="tab" className="tab tab-active">Add Product</p></Link>
-                            <Link to=""><p role="tab" className="tab">My Products</p></Link>
+                            <Link to="/dashboard/myProducts"><p role="tab" className="tab">My Products</p></Link>
                         </div>
                         <hr className="my-2" />
                         <div className="mt-5">
