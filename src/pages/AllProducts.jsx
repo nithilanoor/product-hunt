@@ -17,7 +17,7 @@ const AllProducts = () => {
 
     const fetchProducts = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/accepted/products', {
+            const res = await axios.get('https://product-hunt-server-nu.vercel.app/accepted/products', {
                 params: { search, page }
             });
             setProducts(res.data.products);
