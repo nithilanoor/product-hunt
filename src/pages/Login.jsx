@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import SocialLogin from "../components/SocialLogin";
 import Swal from "sweetalert2";
@@ -7,6 +7,9 @@ import Swal from "sweetalert2";
 const Login = () => {
 
     const { logIn } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     const handleLogin = e => {
         e.preventDefault();
@@ -28,6 +31,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+                navigate(from, { replace: true });
             })
 
     }

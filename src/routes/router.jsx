@@ -11,6 +11,7 @@ import Details from "../pages/Details";
 import MyProfile from "../pages/Dashboard/MyProfile";
 import Payment from "../pages/Dashboard/Payment";
 import AddProduct from "../pages/Dashboard/AddProduct";
+import AllUsers from "../pages/Dashboard/AllUsers";
 
 
 const router = createBrowserRouter([
@@ -57,30 +58,13 @@ const router = createBrowserRouter([
             {
                 path: 'payment',
                 element: <Payment></Payment>
-            }
+            },
 
             // admin only routes
-            // {
-            //     path: 'adminHome',
-            //     element: <AdminRoutes><AdminHome></AdminHome></AdminRoutes>
-            // },
-            // {
-            //     path: 'addItems',
-            //     element: <AdminRoutes><AddItems></AddItems></AdminRoutes>
-            // },
-            // {
-            //     path: 'users',
-            //     element: <AdminRoutes><AllUsers></AllUsers></AdminRoutes>
-            // },
-            // {
-            //     path: "manageItems",
-            //     element: <AdminRoutes><ManageItems></ManageItems></AdminRoutes>
-            // },
-            // {
-            //     path: 'updateItem/:id',
-            //     element: <AdminRoutes><UpdateItem></UpdateItem></AdminRoutes>,
-            //     loader: ({ params }) => fetch(`https://bistro-boss-server-zeta-tawny.vercel.app/menu/${params.id}`)
-            // }
+            {
+                path: 'users',
+                element: <AllUsers></AllUsers>
+            }
 
         ]
     },

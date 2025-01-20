@@ -9,7 +9,7 @@ const MyProfile = () => {
 
     return (
         <div className="flex items-center gap-4">
-            <img src={user?.photoURL} className="rounded object-cover" alt="user" />
+            <img src={user?.photoURL} className="rounded object-cover w-40" alt="user" />
             <div>
                 <h3 className="text-xl font-bold">{user?.displayName}</h3>
                 <p className="font-semibold"><span className="font-bold">Email:</span> {user?.email}</p>

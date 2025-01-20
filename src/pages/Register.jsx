@@ -1,11 +1,15 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import SocialLogin from "../components/SocialLogin";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 
 const Register = () => {
+
+    const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
 
     const {
         register,
@@ -31,32 +35,22 @@ const Register = () => {
                             name: data.name,
                             email: data.email
                         }
-                        console.log(userInfo);
-                        Swal.fire({
-                            position: "top-end",
-                            icon: "success",
-                            text: "Welcome to Product Hunt!",
-                            color: "#3A3F00",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                        // axiosPublic.post('/users', userInfo)
-                        //     .then(res => {
-                        //         if (res.data.insertedId) {
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    reset();
+                                    Swal.fire({
+                                        position: "top-end",
+                                        icon: "success",
+                                        text: "Welcome to Product Hunt!",
+                                        color: "#3A3F00",
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate("/");
 
-                        //             reset();
-                        //             Swal.fire({
-                        //                 position: "top-end",
-                        //                 icon: "success",
-                        //                 title: "User created successfully. Welcome to Bistro Boss!",
-                        //                 color: "#D1A054",
-                        //                 showConfirmButton: false,
-                        //                 timer: 1500
-                        //             });
-                        //             navigate("/");
-
-                        //         }
-                        //     })
+                                }
+                            })
                     })
                     .catch(error => console.log(error))
             })
