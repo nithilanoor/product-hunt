@@ -8,6 +8,7 @@ import DashboardLayout from "../Layouts/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
 import AllProducts from "../pages/AllProducts";
 import Details from "../pages/Details";
+import MyProfile from "../pages/Dashboard/MyProfile";
 
 
 const router = createBrowserRouter([
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
             {
                 path: '/details/:id',
                 element: <PrivateRoute><Details></Details></PrivateRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
             }
         ]
     },
@@ -43,26 +44,10 @@ const router = createBrowserRouter([
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children: [
             // normal user routes
-            // {
-            //     path: 'userHome',
-            //     element: <UserHome></UserHome>
-            // },
-            // {
-            //     path: "reservation",
-            //     element: <Cart></Cart>
-            // },
-            // {
-            //     path: "payment",
-            //     element: <Payment></Payment>
-            // },
-            // {
-            //     path: "paymentHistory",
-            //     element: <PaymentHistory></PaymentHistory>
-            // },
-            // {
-            //     path: "cart",
-            //     element: <Cart></Cart>
-            // },
+            {
+                path: "myProfile",
+                element: <MyProfile></MyProfile>
+            },
 
             // admin only routes
             // {
