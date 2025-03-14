@@ -9,12 +9,12 @@ const DashboardLayout = () => {
     const [isAdmin] = useAdmin();
 
     return (
-        <div className="w-11/12 mx-auto">
+        <div>
             <nav>
                 <Navbar></Navbar>
             </nav>
 
-            <section className="my-12">
+            <section className="my-12 w-11/12 mx-auto pt-12 mt-16 min-h-screen">
                 {isAdmin ?
                     <div>
                         <div role="tablist" className="tabs flex">

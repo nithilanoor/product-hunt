@@ -28,7 +28,7 @@ const AllProducts = () => {
     };
 
     return (
-        <div>
+        <div className='pt-8 my-12 w-11/12 mx-auto min-h-screen'>
             <div className='my-6'>
                 <SectionTitle title={'explore'} subtitle={'Support your favorite products and discover new ones.'}></SectionTitle>
             </div>

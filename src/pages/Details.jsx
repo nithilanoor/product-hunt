@@ -11,7 +11,7 @@ const Details = () => {
     const { name, image, owner, description, tags, external_link, upvotes } = products
 
     return (
-        <div>
+        <div className="w-11/12 mx-auto">
             <div className="hero min-h-screen">
                 <div className="hero-content gap-6 flex-col lg:flex-row">
                     <img

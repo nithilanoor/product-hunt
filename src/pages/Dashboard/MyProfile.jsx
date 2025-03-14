@@ -8,7 +8,7 @@ const MyProfile = () => {
     const { user } = useAuth();
 
     return (
-        <div className="flex items-center gap-4">
+        <div className="grid md:flex items-center gap-4 my-12 h-full p-8 rounded shadow-lg border-b-2 border-r-2 border-l-2 border-[#e0deda] shadow-[#e0deda]">
             <img src={user?.photoURL} className="rounded object-cover w-40" alt="user" />
             <div>
                 <h3 className="text-xl font-bold">{user?.displayName}</h3>
