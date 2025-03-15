@@ -39,11 +39,10 @@ const Home = () => {
 
             </div>
 
-            
-                {/* Contact */}
-                <section className="mt-12">
-                    <Contact />
-                </section>
+            {/* Contact */}
+            <section className="mt-12">
+                <Contact />
+            </section>
 
         </div>
     );

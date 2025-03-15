@@ -1,85 +1,139 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-// import { toast } from 'react-toastify';
-import axios from 'axios';
-import Swal from 'sweetalert2';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { WithContext as ReactTags } from "react-tag-input";
+import Swal from "sweetalert2";
+import useAuth from "../../hooks/useAuth";
+
 
 const AddProduct = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        description: '',
-        website: '',
-        category: '',
-        image: null,
-    });
+
+    const { user } = useAuth();
     const navigate = useNavigate();
 
+    const [formData, setFormData] = useState({
+        name: "",
+        image: "",
+        description: "",
+        tags: [],
+        external_link: "",
+        owner: {
+            name: user.displayName,
+            email: user.email,
+            image: user.photoURL,
+        },
+    });
+
+    // Handle input change
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleImageChange = (e) => {
-        setFormData((prev) => ({ ...prev, image: e.target.files[0] }));
+    // Handle tag input change
+    const handleTagDelete = (i) => {
+        setFormData({ ...formData, tags: formData.tags.filter((_, index) => index !== i) });
     };
 
+    const handleTagAddition = (tag) => {
+        setFormData({ ...formData, tags: [...formData.tags, tag] });
+    };
+
+    // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const formDataToSend = new FormData();
-        Object.keys(formData).forEach((key) => {
-            formDataToSend.append(key, formData[key]);
+      
+        // Convert tags array from objects to just text values
+        const formattedTags = formData.tags.map(tag => tag.text);
+      
+        const productData = {
+          ...formData,
+          tags: formattedTags, // ✅ Now it will be saved correctly
+          createdAt: new Date().toISOString(),
+          upvotes: 0,
+          status: "Accepted",
+        };
+      
+        console.log(productData); // Check if the tags are now an array of strings
+      
+        await fetch("http://localhost:5000/products", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(productData),
         });
 
-        try {
-            await axios.post('/products', {formDataToSend: product}, {
-                headers: { 'Content-Type': 'multipart/form-data' },
-            });
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                text: "Your product has been added.",
-                color: "#3A3F00",
-                showConfirmButton: false,
-                timer: 1500
-            });
-            navigate('/products');
-        } catch (error) {
-            console.log('failed to fetch product')
-        }
-    };
+        navigate("/dashboard/myProducts")
+
+      };
+      
 
     return (
-        <div className="max-w-3xl text-[#3A3F00] mx-auto p-6 bg-white rounded-lg shadow-md mt-10">
-            <h2 className="text-2xl font-bold mb-4">Add a New Product</h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="md:w-3/4 mx-auto p-6 bg-white shadow-lg rounded-lg my-12 text-[#3A3F00]">
+            <h2 className="text-2xl font-semibold mb-4">Add a New Product</h2>
+            <form onSubmit={handleSubmit} className="">
+
+                {/* Product Name */}
                 <div>
-                    <label className="block text-sm font-medium">Product Name</label>
-                    <input type="text" name="name" value={formData.name} onChange={handleChange} required className="input input-bordered w-full" />
+                    <label className="label">
+                        <span className="label-text">Product Name</span>
+                    </label>
+                    <input type="text" name="name" placeholder="Product Name" onChange={handleChange} required className="input input-bordered w-full" />
                 </div>
+
+                {/* Product Image */}
                 <div>
-                    <label className="block text-sm font-medium">Description</label>
-                    <textarea name="description" value={formData.description} onChange={handleChange} required className="textarea textarea-bordered w-full"></textarea>
+                    <label className="label">
+                        <span className="label-text">Product Image</span>
+                    </label>
+                    <input type="url" name="image" placeholder="Product Image URL" onChange={handleChange} required className="input input-bordered w-full" />
                 </div>
+
+                {/* Description */}
                 <div>
-                    <label className="block text-sm font-medium">Website Link</label>
-                    <input type="url" name="website" value={formData.website} onChange={handleChange} required className="input input-bordered w-full" />
+                <label className="label">
+                        <span className="label-text">Product Description</span>
+                    </label>
+                    <textarea name="description" placeholder="Description" onChange={handleChange} required className="textarea textarea-bordered w-full"></textarea>
                 </div>
+
+                {/* External Link */}
                 <div>
-                    <label className="block text-sm font-medium">Category</label>
-                    <select name="category" value={formData.category} onChange={handleChange} required className="select select-bordered w-full">
-                        <option value="">Select a category</option>
-                        <option value="Web App">Web App</option>
-                        <option value="AI Tool">AI Tool</option>
-                        <option value="Software">Software</option>
-                        <option value="Game">Game</option>
-                        <option value="Mobile App">Mobile App</option>
-                    </select>
+                <label className="label">
+                        <span className="label-text">External Link</span>
+                    </label>
+                <input type="url" name="external_link" placeholder="Website / Landing Page" onChange={handleChange} className="input input-bordered w-full" />
                 </div>
+
+                {/* Tags Input */}
                 <div>
-                    <label className="block text-sm font-medium">Product Image</label>
-                    <input type="file" name="image" onChange={handleImageChange} required className="file-input file-input-bordered w-full" />
+                <label className="label">
+                        <span className="label-text">Tags</span>
+                    </label>
+                    
+                    <ReactTags
+                        tags={formData.tags}
+                        handleDelete={handleTagDelete}
+                        handleAddition={handleTagAddition}
+                        inputFieldPosition="top"
+                        allowDragDrop={false}
+                        classNames={{
+                            tags: "flex gap-2",
+                            tag: "bg-[#8f9182] text-white px-3 font-bold flex gap-2 py-1 m-1 rounded",
+                            tagInputField: "input input-bordered w-60",
+                        }}
+                    />
                 </div>
-                <button type="submit" className="btn bg-[#F4F1EC] hover:bg-[#8f9182] hover:text-white text-[#3A3F00] text-lg font-serif w-full">Add Product</button>
+
+                {/* Owner Info (Read-Only) */}
+                <div className="bg-[#fcfbf9] shadow-lg p-4 my-6 rounded flex gap-4 items-center">
+                    <img src={formData.owner.image} alt="Owner" className="w-12 object-cover h-12 rounded-full mt-2" />
+                    <div>
+                    <h3 className="font-semibold font-serif">Product Owner</h3>
+                    <p><strong>Name:</strong> {formData.owner.name}</p>
+                    <p><strong>Email:</strong> {formData.owner.email}</p>
+                    </div>
+                </div>
+
+                {/* Submit Button */}
+                <button type="submit" className="btn hover:bg-[#F4F1EC] bg-[#8f9182] text-white hover:text-[#3A3F00] text-lg font-serif w-full">Submit Product</button>
             </form>
         </div>
     );

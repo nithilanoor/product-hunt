@@ -2,16 +2,17 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
+import useAuth from "../../hooks/useAuth";
 
 const MyProducts = () => {
     const [products, setProducts] = useState([]);
-    const user = JSON.parse(localStorage.getItem("user")); // Assuming user is stored in localStorage
-    const userId = user?._id; // Adjust based on your user structure
+    const user = useAuth(); // Assuming user is stored in localStorage
+     // Adjust based on your user structure
 
     useEffect(() => {
         const fetchMyProducts = async () => {
             try {
-                const res = await fetch(`/api/products?userId=${userId}`);
+                const res = await fetch(`http://localhost:5000/products?email=${user?.email}`);
                 const data = await res.json();
                 setProducts(data);
             } catch (error) {
@@ -19,8 +20,8 @@ const MyProducts = () => {
             }
         };
 
-        if (userId) fetchMyProducts();
-    }, [userId]);
+        if (user?.email) fetchMyProducts();
+    }, [user?.email]);
 
     const handleDelete = async (productId) => {
         Swal.fire({
@@ -34,7 +35,7 @@ const MyProducts = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const res = await fetch(`/api/products/${productId}`, {
+                    const res = await fetch(`http://localhost:5000/products/${productId}`, {
                         method: "DELETE",
                     });
 
