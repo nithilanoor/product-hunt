@@ -16,7 +16,7 @@ const Contact = () => {
                     </div>
                     <div className="join p-4">
                         <input className="input input-bordered rounded-full join-item" placeholder="Email" />
-                        <button className="btn join-item text-[#F4F1EC] bg-zinc-800 rounded-r-full">Subscribe</button>
+                        <button className="btn join-item text-[#F4F1EC] hover:text-[#3A3F00] bg-zinc-800 rounded-r-full">Subscribe</button>
                     </div>
                 </div>
                 <div className="flex justify-center">

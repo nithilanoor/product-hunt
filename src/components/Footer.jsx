@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import footerLogo from "../../public/logo/icons8-ai-100.png"
 
 const Footer = () => {
@@ -14,23 +15,15 @@ const Footer = () => {
                 </div>
                 <nav className="text-[#3A3F00]">
                     <h6 className="footer-title">Services</h6>
-                    <a className="link link-hover">Branding</a>
-                    <a className="link link-hover">Design</a>
-                    <a className="link link-hover">Marketing</a>
-                    <a className="link link-hover">Advertisement</a>
+                    <Link to={"/allProducts"} className="link link-hover">Products</Link>
+                    <Link to={"/dashboard/addProduct"} className="link link-hover">Add Products</Link>
+                    <Link to={"/dashboard/myProfile"} className="link link-hover">Dashboard</Link>
+                    <Link to={"/dashboard/myProfile"} className="link link-hover">Profile</Link>
                 </nav>
                 <nav className="text-[#3A3F00]">
                     <h6 className="footer-title">Company</h6>
-                    <a className="link link-hover">About us</a>
-                    <a className="link link-hover">Contact</a>
-                    <a className="link link-hover">Jobs</a>
-                    <a className="link link-hover">Press kit</a>
-                </nav>
-                <nav className="text-[#3A3F00]">
-                    <h6 className="footer-title">Legal</h6>
-                    <a className="link link-hover">Terms of use</a>
-                    <a className="link link-hover">Privacy policy</a>
-                    <a className="link link-hover">Cookie policy</a>
+                    <Link to={"/"} className="link link-hover">Home</Link>
+                    <Link to={"/allProducts"} className="link link-hover">Products</Link>
                 </nav>
             </div>
             <div className="footer footer-center bg-[#F4F1EC] text-base-content p-4">

@@ -52,10 +52,11 @@ const Statistics = () => {
                     </PieChart>
                 </ResponsiveContainer>
             </div>
-            <div className="mt-6">
-                <p className="text-xl font-medium">Products: {stats.products}</p>
-                <p className="text-xl font-medium">Users: {stats.users}</p>
-                <p className="text-xl font-medium">Reviews: {stats?.reviews || 0}</p>
+            <div className="my-8 grid
+             grid-cols-1 gap-4 *:rounded *:p-2 *:w-44 mx-auto text-center *:font-bold">
+                <p className="text-xl font-medium shadow-md hover:shadow-[#F4F1EC] hover:shadow-xl hover:border-l-2">Products: {stats.products}</p>
+                <p className="text-xl font-medium shadow-md hover:shadow-[#F4F1EC] hover:shadow-xl hover:border-l-2">Users: {stats.users}</p>
+                <p className="text-xl font-medium shadow-md hover:shadow-[#F4F1EC] hover:shadow-xl hover:border-l-2">Reviews: {stats?.reviews || 0}</p>
             </div>
         </div>
     );

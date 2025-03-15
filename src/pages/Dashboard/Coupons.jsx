@@ -1,84 +1,55 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import CouponsList from "./CouponList";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
 
-const Coupons = () => {
-    const [coupons, setCoupons] = useState([]);
-    const axiosSecure = useAxiosSecure();
-    const [newCoupon, setNewCoupon] = useState({
+const Coupon = () => {
+    const [coupon, setCoupon] = useState({
         code: "",
         discount: "",
         expiryDate: "",
     });
 
-    useEffect(() => {
-        const fetchCoupons = async () => {
-            try {
-                const res = await axiosSecure.get("/coupons");
-                // const data = await res.json();
-                setCoupons(res.data);
-            } catch (error) {
-                console.error("Error fetching coupons:", error);
-            }
-        };
+    // const [message, setMessage] = useState("");
 
-        fetchCoupons();
-    }, []);
-
-    const handleDelete = async (couponId) => {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "This will permanently delete the coupon!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#d33",
-            cancelButtonColor: "#3085d6",
-            confirmButtonText: "Yes, delete it!",
-        }).then(async (result) => {
-            if (result.isConfirmed) {
-                try {
-                    const res = await axiosSecure.delete(`/coupons/${couponId}`);
-
-                    if (res.ok) {
-                        setCoupons(coupons.filter((coupon) => coupon._id !== couponId));
-                        Swal.fire("Deleted!", "Coupon has been removed.", "success");
-                    } else {
-                        Swal.fire("Error!", "Failed to delete the coupon.", "error");
-                    }
-                } catch (error) {
-                    Swal.fire("Error!", "Something went wrong.", "error");
-                }
-            }
-        });
+    const handleChange = (e) => {
+        setCoupon({ ...coupon, [e.target.name]: e.target.value });
     };
 
-    const handleAddCoupon = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!newCoupon.code || !newCoupon.discount || !newCoupon.expiryDate) {
-            Swal.fire("Error!", "Please fill in all fields.", "error");
-            return;
-        }
+        const response = await fetch("http://localhost:5000/coupons", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                code: coupon.code,
+                discount: Number(coupon.discount),
+                expiryDate: coupon.expiryDate,
+            }),
+        });
 
-        try {
-            const res = await axiosSecure("/coupons", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(newCoupon),
-            });
+        const data = await response.json();
 
-            if (res.ok) {
-                const addedCoupon = await res.json();
-                setCoupons([...coupons, addedCoupon]);
-                setNewCoupon({ code: "", discount: "", expiryDate: "" });
-                Swal.fire("Success!", "Coupon added successfully.", "success");
-            } else {
-                Swal.fire("Error!", "Failed to add coupon.", "error");
-            }
-        } catch (error) {
-            Swal.fire("Error!", "Something went wrong.", "error");
+        if (response.ok) {
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                text: "Coupon added successfully!",
+                showConfirmButton: false,
+                timer: 1500
+              });
+              
+            // setMessage("Coupon added successfully!");
+            setCoupon({ code: "", discount: "", expiryDate: "" });
+        } else {
+            // setMessage(data.error || "Failed to add coupon");
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+              });
         }
     };
 
@@ -86,66 +57,60 @@ const Coupons = () => {
         <div className="container mx-auto p-6 text-[#3A3F00]">
             <h2 className="text-2xl font-bold mb-4">Manage Coupons</h2>
 
-            {/* Add Coupon Form */}
-            <form onSubmit={handleAddCoupon} className="bg-base-100 p-4 shadow-md mb-6 rounded">
-                <h3 className="text-lg font-semibold mb-2">Add New Coupon</h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <input
-                        type="text"
-                        placeholder="Coupon Code"
-                        className="input input-bordered w-full"
-                        value={newCoupon.code}
-                        onChange={(e) => setNewCoupon({ ...newCoupon, code: e.target.value })}
-                    />
-                    <input
-                        type="number"
-                        placeholder="Discount %"
-                        className="input input-bordered w-full"
-                        value={newCoupon.discount}
-                        onChange={(e) => setNewCoupon({ ...newCoupon, discount: e.target.value })}
-                    />
-                    <input
-                        type="date"
-                        className="input input-bordered w-full"
-                        value={newCoupon.expiryDate}
-                        onChange={(e) => setNewCoupon({ ...newCoupon, expiryDate: e.target.value })}
-                    />
-                </div>
-                <button type="submit" className="btn bg-[#F4F1EC] hover:bg-[#8f9182] hover:text-white text-[#3A3F00] text-lg font-serif mt-4">Add Coupon</button>
-            </form>
+            {/* {message && <p className="text-green-600">{message}</p>} */}
 
-            {/* Coupons List */}
-            <div className="overflow-x-auto">
-                <table className="table w-full">
-                    <thead>
-                        <tr>
-                            <th>Code</th>
-                            <th>Discount</th>
-                            <th>Expiry Date</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {coupons.map((coupon) => (
-                            <tr key={coupon._id}>
-                                <td>{coupon.code}</td>
-                                <td>{coupon.discount}%</td>
-                                <td>{new Date(coupon.expiryDate).toLocaleDateString()}</td>
-                                <td>
-                                    <button onClick={() => handleDelete(coupon._id)} className="btn btn-sm btn-error">
-                                        Delete
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-                {coupons.length === 0 && <p className="text-center mt-4">No coupons available.</p>}
+            {/* Add Coupon Form */}
+            <form onSubmit={handleSubmit} className="bg-base-100 p-4 shadow-lg mb-6 rounded">
+                <h3 className="text-lg font-bold mb-2">Add New Coupon</h3>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                    <div>
+                        <label className="block font-medium">Coupon Code:</label>
+                        <input
+                            type="text"
+                            name="code"
+                            value={coupon.code}
+                            onChange={handleChange}
+                            required
+                            className="w-full border rounded p-2"
+                            placeholder="Enter coupon code"
+                        />
+                    </div>
+
+                    <div>
+                        <label className="block font-medium">Discount (%):</label>
+                        <input
+                            type="number"
+                            name="discount"
+                            value={coupon.discount}
+                            onChange={handleChange}
+                            required
+                            className="w-full border rounded p-2"
+                            placeholder="Enter discount"
+                        />
+                    </div>
+
+                    <div>
+                        <label className="block font-medium">Expiry Date:</label>
+                        <input
+                            type="date"
+                            name="expiryDate"
+                            value={coupon.expiryDate}
+                            onChange={handleChange}
+                            required
+                            className="w-full border rounded p-2"
+                        />
+                    </div>
+                </div>
+
+                <button type="submit" className="btn bg-[#F4F1EC] hover:bg-[#8f9182] hover:text-white text-[#3A3F00] text-lg font-serif mt-4">Add Coupon</button>
+
+            </form>
+            <div className="my-14">
+                <CouponsList></CouponsList>
             </div>
         </div>
     );
 };
 
-
-
-export default Coupons;
+export default Coupon;
