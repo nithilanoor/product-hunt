@@ -40,30 +40,38 @@ const AddProduct = () => {
     // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-      
+
         // Convert tags array from objects to just text values
         const formattedTags = formData.tags.map(tag => tag.text);
-      
+
         const productData = {
-          ...formData,
-          tags: formattedTags, // ✅ Now it will be saved correctly
-          createdAt: new Date().toISOString(),
-          upvotes: 0,
-          status: "Accepted",
+            ...formData,
+            tags: formattedTags, // ✅ Now it will be saved correctly
+            createdAt: new Date().toISOString(),
+            upvotes: 0,
+            status: "Accepted",
         };
-      
+
         console.log(productData); // Check if the tags are now an array of strings
-      
-        await fetch("http://localhost:5000/products", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(productData),
+
+        await fetch("https://product-hunt-server-nu.vercel.app/products", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(productData),
+        });
+
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            text: "Product Added Successfully!",
+            showConfirmButton: false,
+            timer: 1500
         });
 
         navigate("/dashboard/myProducts")
 
-      };
-      
+    };
+
 
     return (
         <div className="md:w-3/4 mx-auto p-6 bg-white shadow-lg rounded-lg my-12 text-[#3A3F00]">
@@ -88,7 +96,7 @@ const AddProduct = () => {
 
                 {/* Description */}
                 <div>
-                <label className="label">
+                    <label className="label">
                         <span className="label-text">Product Description</span>
                     </label>
                     <textarea name="description" placeholder="Description" onChange={handleChange} required className="textarea textarea-bordered w-full"></textarea>
@@ -96,18 +104,18 @@ const AddProduct = () => {
 
                 {/* External Link */}
                 <div>
-                <label className="label">
+                    <label className="label">
                         <span className="label-text">External Link</span>
                     </label>
-                <input type="url" name="external_link" placeholder="Website / Landing Page" onChange={handleChange} className="input input-bordered w-full" />
+                    <input type="url" name="external_link" placeholder="Website / Landing Page" onChange={handleChange} className="input input-bordered w-full" />
                 </div>
 
                 {/* Tags Input */}
                 <div>
-                <label className="label">
+                    <label className="label">
                         <span className="label-text">Tags</span>
                     </label>
-                    
+
                     <ReactTags
                         tags={formData.tags}
                         handleDelete={handleTagDelete}
@@ -126,9 +134,9 @@ const AddProduct = () => {
                 <div className="bg-[#fcfbf9] shadow-lg p-4 my-6 rounded flex gap-4 items-center">
                     <img src={formData.owner.image} alt="Owner" className="w-12 object-cover h-12 rounded-full mt-2" />
                     <div>
-                    <h3 className="font-semibold font-serif">Product Owner</h3>
-                    <p><strong>Name:</strong> {formData.owner.name}</p>
-                    <p><strong>Email:</strong> {formData.owner.email}</p>
+                        <h3 className="font-semibold font-serif">Product Owner</h3>
+                        <p><strong>Name:</strong> {formData.owner.name}</p>
+                        <p><strong>Email:</strong> {formData.owner.email}</p>
                     </div>
                 </div>
 

@@ -18,7 +18,7 @@ const Coupon = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const response = await fetch("http://localhost:5000/coupons", {
+        const response = await fetch("https://product-hunt-server-nu.vercel.app/coupons", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

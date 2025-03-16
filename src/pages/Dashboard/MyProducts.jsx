@@ -12,7 +12,7 @@ const MyProducts = () => {
     useEffect(() => {
         const fetchMyProducts = async () => {
             try {
-                const res = await fetch(`http://localhost:5000/products?email=${user?.email}`);
+                const res = await fetch(`https://product-hunt-server-nu.vercel.app/products?email=${user?.email}`);
                 const data = await res.json();
                 setProducts(data);
             } catch (error) {
@@ -35,7 +35,7 @@ const MyProducts = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    const res = await fetch(`http://localhost:5000/products/${productId}`, {
+                    const res = await fetch(`https://product-hunt-server-nu.vercel.app/products/${productId}`, {
                         method: "DELETE",
                     });
 

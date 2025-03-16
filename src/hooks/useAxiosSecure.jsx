@@ -5,8 +5,8 @@ import useAuth from "./useAuth";
 
 
 const axiosSecure = axios.create({
+    baseURL: 'https://product-hunt-server-nu.vercel.app'
     // baseURL: 'https://product-hunt-server-nu.vercel.app'
-    baseURL: 'http://localhost:5000'
 })
 
 
