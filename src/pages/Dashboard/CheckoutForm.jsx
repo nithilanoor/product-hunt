@@ -72,24 +72,27 @@ const CheckoutForm = () => {
             if (paymentIntent.status === 'succeeded') {
                 Swal.fire({
                     position: "top-end",
-                    width: 400,
                     icon: "success",
-                    text: "Payment Successful.",
-                    color: "#3A3F00",
+                    title: "Payment Successful.",
                     showConfirmButton: false,
                     timer: 1500
                 });
                 navigate('/dashboard/myProfile')
 
                 // save the data in DB
-                // const payment = {
-                //     email: user.email,
-                //     price: price,
-                //     date: new Date(),                    
-                //     status: 'verified'
-                // }
+                const payment = {
+                    email: user.email,
+                    price: price,
+                    date: new Date(),                    
+                    status: 'verified'
+                }
 
-                // const res = await axiosSecure.post('/payments', payment)
+                const res = await axiosSecure.post('/payments', payment);
+                console.log('payment saved', res.data);
+                // refetch();
+                if (res.data?.paymentResult?.insertedId){
+                    console.log("payment saved")
+                }
 
             }
         }

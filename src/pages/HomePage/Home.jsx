@@ -3,6 +3,7 @@ import AboutUs from "./AboutUs";
 import Banner from "./Banner";
 import Contact from "./Contact";
 import FeaturedProducts from "./FeaturedProducts";
+import JoinUs from "./JoinUs";
 import Mission from "./Mission";
 import Trending from "./Trending";
 
@@ -38,6 +39,11 @@ const Home = () => {
                 </section>
 
             </div>
+
+            {/* Join Us */}
+            <section className="my-12">
+                <JoinUs></JoinUs>
+            </section>
 
             {/* Contact */}
             <section className="mt-12">
