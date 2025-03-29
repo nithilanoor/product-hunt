@@ -12,7 +12,7 @@ const Details = () => {
 
     return (
         <div className="w-11/12 mx-auto">
-            <div className="hero min-h-screen">
+            <div className="hero min-h-screen pt-12 my-12 lg:pt-0 lg:my-0">
                 <div className="hero-content gap-6 flex-col lg:flex-row">
                     <img
                         src={image}

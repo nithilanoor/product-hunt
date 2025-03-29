@@ -23,7 +23,7 @@ const Trending = () => {
             <div>
                 <SectionTitle title={'trending'} subtitle={"Discover what’s making waves in the world of tech"}></SectionTitle>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 my-8 md:w-10/12 lg:w-11/12 mx-auto">
                 {
                     product.map(item => <ProductItem key={item._id} item={item}></ProductItem>)
                 }
