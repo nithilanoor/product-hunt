@@ -29,7 +29,7 @@ const AllProducts = () => {
 
     return (
         <div className='pt-8 my-12 w-11/12 mx-auto min-h-screen'>
-            <div className='my-6'>
+            <div className='mt-12 mb-10'>
                 <SectionTitle title={'explore'} subtitle={'Support your favorite products and discover new ones.'}></SectionTitle>
             </div>
 
@@ -45,7 +45,7 @@ const AllProducts = () => {
             </div>
 
             {/* Products Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 my-8 md:w-10/12 lg:w-full mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 my-8 w-10/12 md:w-10/12 lg:w-full mx-auto">
                 {products.map((item) => (
                     <ProductItem key={item._id} item={item} />
                 ))}
