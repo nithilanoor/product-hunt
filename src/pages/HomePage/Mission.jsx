@@ -51,7 +51,7 @@ const Mission = () => {
         <div>
             <SectionTitle title={"objective"} subtitle={"Connecting creators and users to shape the future of tech"} />
 
-            <div className="bg-[#F4F1EC] p-6 my-4 rounded grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-[#3A3F00] text-center">
+            <div className="p-6 my-4 rounded grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-[#3A3F00] text-center">
                 {
                     data.map(point => (
                         <div key={point.id} className="bg-[#fcfbf9] p-4 rounded shadow-md hover:shadow-xl space-y-2 border-b-2 hover:border-l-2">
